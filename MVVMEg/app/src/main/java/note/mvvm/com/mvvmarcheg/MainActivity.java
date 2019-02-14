@@ -59,8 +59,12 @@ public class MainActivity extends AppCompatActivity {
             public void onChanged(@Nullable List<Note> notes) {
 
                 //Update Recyclerview here
-                adapter.setNotes(notes);
-             }
+                //adapter.setNotes(notes);
+
+                //Due to use DiffUtil when we remove the item, other items are not get flash out
+                //Also adapter only update them and show animation if content insidse not is changes
+                adapter.submitList(notes);
+            }
         });
 
 
